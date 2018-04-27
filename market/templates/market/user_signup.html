@@ -1,0 +1,29 @@
+{% extends 'market/base.html' %}
+
+{% block body %}
+    <div class="callout large secondary">
+    <h3 class="separator-left">Sign Up</h3>
+    <form action="{% url 'user_create'  %}" method="post">
+        {% csrf_token %}
+        <label>Name:
+            <input type="text" name="name" required>
+        </label><br>
+        <label>Email:
+            <input type="email" name="email" required>
+        </label><br>
+        <label>Address:
+            <input type="text" name="address">
+        </label><br>
+        <label>Phone Number:
+            <input type="text" name="pnumber">
+        </label><br>
+        <label>Account Type:
+            <select id="select" name="type" required>
+                <option value="TR">Trader</option>
+                <option value="AD">Admin</option>
+            </select>
+        </label><br>
+        <input type="submit" value="Submit" class="button float-right">
+    </form>
+    </div>
+{% endblock %}

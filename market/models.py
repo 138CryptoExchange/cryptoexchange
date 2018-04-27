@@ -20,8 +20,7 @@ class PaymentSource(models.Model):
     payment_source_id = models.AutoField(primary_key=True, unique=True)
     u_id = models.ForeignKey(User, on_delete=models.CASCADE, db_column="user_id", default=None)
     name = models.CharField(max_length=100)
-    created_on = models.TimeField(auto_now=True)
-    created_at = models.DateField(auto_now=True)
+    created_on = models.CharField(max_length=20)
 
 
 class Wallet(models.Model):

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Payment Sources</title>
-</head>
-<body>
+{% extends 'market/base.html' %}
+
+{% block body %}
     {% if all_payment_sources %}
         <ul>
             {% for payment_source in all_payment_sources %}
@@ -16,5 +12,4 @@
     {% else %}
         <h3>You don't have any payment sources.</h3>
     {% endif %}
-</body>
-</html>
+{% endblock %}
