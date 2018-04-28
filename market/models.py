@@ -37,3 +37,19 @@ class DebitCard(models.Model):
     name = models.CharField(max_length=100)
     expiry_date = models.DateField
 
+class Currency(models.Model):
+    currency_name = models.CharField(max_length=100, primary_key=True)
+
+    CRYPTO = "CR"
+    USD = "UD"
+    CURRENCY_TYPE_CHOICES = (
+        (CRYPTO, 'Cryptocurrency'),
+        (USD, 'Currency'),
+    )
+    currency_type = models.CharField(max_length=2, choices=CURRENCY_TYPE_CHOICES)
+
+    converted_currency = models.ForeignKey('self', on_delete=models.CASCADE, null=True, related_name='currency_to_convert')
+
+
+
+
