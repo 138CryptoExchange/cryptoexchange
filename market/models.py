@@ -50,6 +50,14 @@ class Currency(models.Model):
 
     converted_currency = models.ForeignKey('self', on_delete=models.CASCADE, null=True, related_name='currency_to_convert')
 
+class PmntSrc_HAS_Currency(models.Model):
+    balance = models.CharField(max_length=100)
+    pmnt_src_id = models.ForeignKey('PaymentSource', on_delete=models.CASCADE, db_column="payment_source_id")
+    currency_id = models.ForeignKey('Currency', on_delete=models.CASCADE)
+
+    class META:
+        unique_together = (("pmnt_src_id", "currency_id"),)
+
 
 
 
