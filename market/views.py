@@ -185,6 +185,12 @@ def all_payment_sources(request):
 def all_user_payment_sources(request, user_id):
     not_signed_in_check(request)
     user_all_ps = PaymentSource.objects.filter(u_id=user_id)
+    # TODO:
+    '''
+    PaymentSource.objects.filter(u_id=user_id)
+        Given a foreign key user_id, get all the corresponding payment sources.
+        (get all the payment sources of a given user)
+    '''
     return render(request, 'market/all_payment_sources.html', {
         'all_payment_sources': user_all_ps,
     })
@@ -192,6 +198,11 @@ def all_user_payment_sources(request, user_id):
 
 def payment_source_detail(request, ps_id):
     not_signed_in_check(request)
+    # TODO:
+    '''
+    PaymentSource.objects.get(pk=ps_id)
+        Given a payment_source_id, get the corresponding payment source.
+    '''
     payment_source = PaymentSource.objects.get(pk=ps_id) # TODO: create query
     return render(request, 'market/payment_source_detail.html', {'paymnt_src': payment_source})
 
