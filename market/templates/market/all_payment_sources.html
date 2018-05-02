@@ -12,4 +12,6 @@
     {% else %}
         <h3>You don't have any payment sources.</h3>
     {% endif %}
+    <br>
+    <center><a href="{% url 'payment_source_new' %}" class="button">New Payment Source</a>
 {% endblock %}

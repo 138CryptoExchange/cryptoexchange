@@ -50,6 +50,7 @@ def not_signed_in_check(request):
     if 'current_user' not in request.session or \
             request.session['current_user'] is None or \
             current_user is None:
+        set_user_session(request, empty=True)
         return render(request, 'market/user_signup.html', {
             'error_message': "You must be signed in to view that page.",
         })
@@ -176,18 +177,23 @@ def user_profile(request, user_id):
 def all_payment_sources(request):
     not_signed_in_check(request)
     all_ps = PaymentSource.objects.all()
-    # TODO: create query - but only for showing payment sources of a given user_id and not ALL
+    # TODO: create query - but only for showing payment sources of ALL users
     context = {'all_payment_sources': all_ps}
     return render(request, 'market/all_payment_sources.html', context)
 
 
-def payment_source_detail(request, payment_source_id):
+def all_user_payment_sources(request, user_id):
     not_signed_in_check(request)
-    try:
-        payment_source = PaymentSource.objects.get(pk=payment_source_id) # TODO: create query
-    except PaymentSource.DoesNotExist:
-        raise Http404("Payment Source does not exist.")
-    return render(request, 'market/payment_source_detail.html', {'payment_source': payment_source})
+    user_all_ps = PaymentSource.objects.filter(u_id=user_id)
+    return render(request, 'market/all_payment_sources.html', {
+        'all_payment_sources': user_all_ps,
+    })
+
+
+def payment_source_detail(request, ps_id):
+    not_signed_in_check(request)
+    payment_source = PaymentSource.objects.get(pk=ps_id) # TODO: create query
+    return render(request, 'market/payment_source_detail.html', {'paymnt_src': payment_source})
 
 
 def payment_source_create(request):

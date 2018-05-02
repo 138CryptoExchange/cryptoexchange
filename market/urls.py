@@ -26,8 +26,12 @@ urlpatterns = [
     # /all_payment_sources/
     path('all_payment_source', views.all_payment_sources, name='all_payment_sources'),
 
+    # /all_user_payment_sources/
+    path('all_user_payment_source/<int:user_id>', views.all_user_payment_sources,
+         name='all_user_payment_source'),
+
     # /payment_sources/{{id}}/
-    path('payment_source/<int:payment_source_id>', views.payment_source_detail,
+    path('payment_source/<int:ps_id>', views.payment_source_detail,
          name='payment_source_detail'),
 
     # /payment_source/new

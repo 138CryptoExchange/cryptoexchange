@@ -28,7 +28,7 @@
                 <li class="menu-text">Crypto Exchange {{ current_user.name }}</li>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'user_profile' current_user.user_id %}">Profile</a></li>
-                <li><a href="#0">Payment Sources</a></li>
+                <li><a href="{% url 'all_user_payment_source' current_user.user_id %}">Payment Sources</a></li>
             </ul>
         </div>
         <div class="top-bar-right">

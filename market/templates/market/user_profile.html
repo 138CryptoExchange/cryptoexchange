@@ -2,5 +2,11 @@
 
 {% block body %}
     <h1 class="text-center">Profile Page</h1>
-    <p>User Name: {{ current_user.name }}</p>
+    <p class="text-center">
+        <strong>Username:</strong> {{ current_user.name }}<br>
+        <strong>Email:</strong> {{ current_user.email }}<br>
+        <strong>Address:</strong> {{ current_user.address }}<br>
+        <strong>Phone Number:</strong> {{ current_user.pnumber }}<br>
+        <strong>Account Type:</strong> {{ current_user.type }}<br>
+    </p>
 {% endblock %}
