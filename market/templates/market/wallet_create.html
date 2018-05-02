@@ -1,0 +1,14 @@
+{% extends 'market/base.html' %}
+
+{% block body %}
+    <div class="callout large secondary">
+    <h3 class="separator-left">Wallet</h3>
+    <form action="{% url 'wallet_create' %}" method="post">
+        {% csrf_token %}
+        <label>Max Limit:
+            <input type="text" name="max_limit" required>
+        </label><br>
+        <input type="submit" value="Save" class="button float-right">
+    </form>
+    </div>
+{% endblock %}

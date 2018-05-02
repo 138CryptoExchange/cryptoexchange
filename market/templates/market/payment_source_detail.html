@@ -1,5 +1,24 @@
 {% extends 'market/base.html' %}
 
 {% block body %}
-    <h4>{{ paymnt_src.name }}</h4>
+    <div class="callout large secondary">
+    <h3 class="separator-left">Payment Sources</h3>
+        {% csrf_token %}
+
+    	{% if debit %}
+    	<p> {{payment_source.name}} {{debit.bank_name}} </p>
+    	{%  endif %}
+
+    	{% if wallet %}
+    	<p> {{payment_source.name}} {{wallet.max_limit}} </p>
+    	{%  endif %}
+		
+		{% if not wallet and not debit %}
+    	<p>{{ payment_source.name }}</p>
+    	{%  endif %}
+
+			<!-- for testing each form -->
+    	<a href="{% url 'debitcard_create' payment_source %}" >Debit Card Create</a>
+    	<a href="{% url 'wallet_create' payment_source %}" >Wallet Create</a>
+	</div>
 {% endblock %}

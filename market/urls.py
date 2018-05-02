@@ -5,6 +5,9 @@ urlpatterns = [
     # /market/
     path('', views.home, name='home'),
 
+    # /test
+    path('test', views.test, name='test'),
+
     # /sign_up
     path('sign_up', views.user_signup, name='user_signup'),
 
@@ -41,4 +44,12 @@ urlpatterns = [
     # /payment_sources/create - not a direct url
     path('payment_source/create', views.payment_source_create,
          name='payment_source_create'),
+
+    # /payment_sources/debitcard_create - testing
+    path('payment_source/debitcard_create', views.debitcard_create,
+         name='debitcard_create'),
+
+    # /payment_sources/wallet_create - testing
+    path('payment_source/wallet_create', views.wallet_create,
+         name='wallet_create'),
 ]

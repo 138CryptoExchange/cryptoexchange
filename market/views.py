@@ -1,5 +1,5 @@
 from django.http import Http404
-from .models import PaymentSource, User
+from .models import PaymentSource, User, DebitCard, Wallet
 from django.shortcuts import render
 from .context_processor import user_session_processor
 import time
@@ -17,6 +17,11 @@ def home(request):
         'notification_message': "",
     })
 
+def test(request):
+    if 'current_user' not in request.session:
+        set_user_session(request, True)
+    user = request.session['current_user']
+    return render(request, 'market/base.html', {'current_user': user})
 
 # ********************************************* User
 
@@ -171,7 +176,6 @@ def user_profile(request, user_id):
         raise Http404("User does not exist.")
     return render(request, 'market/user_profile.html', {'user': user})
 
-
 # ********************************************* Payment Source
 
 def all_payment_sources(request):
@@ -198,6 +202,7 @@ def all_user_payment_sources(request, user_id):
 
 def payment_source_detail(request, ps_id):
     not_signed_in_check(request)
+    global payment_source
     # TODO:
     '''
     PaymentSource.objects.get(pk=ps_id)
@@ -210,17 +215,31 @@ def payment_source_detail(request, ps_id):
 def payment_source_create(request):
     not_signed_in_check(request)
     global current_user
+  #  global payment_type
+  #  global payment_source
+
     input_name = request.POST['name']
-    if input_name:
+    input_type = request.POST['type']
+
+    if input_name and input_type:
         # TODO: create query
+      #  payment_type = input_type
+
         payment_source = PaymentSource()
         payment_source.name = input_name
         payment_source.u_id = current_user
         payment_source.created_on = str(get_datetime())
         payment_source.save()  # TODO: this will be replaced by a function call to query function
-        return render(request, 'market/payment_source_detail.html', {
-            'payment_source': payment_source
-        })
+
+        if input_type == 'DebitCard':
+            return render(request, 'market/debitcard_create.html', {
+                'payment_source': payment_source,
+            })
+
+        else:
+            return render(request, 'market/wallet_create.html', {
+                'payment_source': payment_source,
+            })
     else:
         return render(request, 'market/payment_source_new.html', {
             'error_message': "Please fill out all the fields."
@@ -230,6 +249,68 @@ def payment_source_create(request):
 def payment_source_new(request):
     not_signed_in_check(request)
     return render(request, 'market/payment_source_new.html')
+
+# def payment_source_edit(request):
+#     not_signed_in_check(request)
+#     if payment_type == 'DebitCard':
+#         return render(request, 'market/debitcard_edit.html')
+#     else:
+#         return render(request, 'market/wallet_edit.html')
+
+# def debitcard_detail(request, dc_id):
+#     not_signed_in_check(request)
+#     debit = DebitCard.objects.get(pk=dc_id)
+#     return render(request, 'market/payment_source_detail.html', {'DebitCard': debit})
+
+
+
+def debitcard_create(request, payment_source):
+    not_signed_in_check(request)
+
+    input_bank_name = request.POST.get('bank_name', None)
+    input_card_number = request.POST.get('cnumber', None)
+    input_name = request.POST.get('name', None)
+    input_expiry_date = request.POST.get('expirydate', None)
+
+    if input_bank_name and input_card_number and input_name and input_expiry_date:
+        debit = DebitCard()
+        debit.card_pmnt_src_id = payment_source
+        debit.bank_name = input_bank_name
+        debit.name = input_name
+        debit.card_number = input_card_number
+        debit.expiry_date = input_expiry_date
+        debit.save()
+
+        return render(request, 'market/payment_source_detail.html', {
+            'paymnt_source': payment_source,
+            'debit': debit,
+        })
+    else:
+        return render(request, 'market/debitcard_create.html', {
+            'error_message': "Please fill out all the fields."
+        })
+
+def wallet_create(request, payment_source):
+    not_signed_in_check(request)
+
+    input_max_limit = request.POST.get('max_limit', None)
+
+    if input_max_limit:
+        wallet = Wallet()
+        wallet.wallet_pmnt_src_id = payment_source
+        wallet.max_limit = input_max_limit
+        wallet.save()
+
+        return render(request, 'market/payment_source_detail.html', {
+            'paymnt_source': payment_source,
+            'wallet': wallet,
+        })
+    else:
+        return render(request, 'market/wallet_create.html', {
+            'error_message': "Please fill out all the fields."
+        })
+
+
 
 
 # ********************************************* Relationships
