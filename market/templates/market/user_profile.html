@@ -1,5 +1,6 @@
 {% extends 'market/base.html' %}
 
 {% block body %}
-    <title>{{ user.name }}</title>
+    <h1 class="text-center">Profile Page</h1>
+    <p>User Name: {{ current_user.name }}</p>
 {% endblock %}

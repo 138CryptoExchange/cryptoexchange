@@ -1,0 +1,17 @@
+{% extends 'market/base.html' %}
+
+{% block body %}
+    <div class="callout large secondary">
+        <h3 class="separator-left">Sign In</h3>
+        <form action="{% url 'user_signin_redirect'  %}" method="post">
+            {% csrf_token %}
+            <label>Name:
+                <input type="text" name="name" required>
+            </label><br>
+            <label>Email:
+                <input type="email" name="email" required>
+            </label><br>
+            <input type="submit" value="Submit" class="button float-right">
+        </form>
+    </div>
+{% endblock %}

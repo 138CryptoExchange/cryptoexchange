@@ -1,6 +1,12 @@
 {% extends 'market/base.html' %}
 
 {% block body %}
-    <h1>This is the market homepage.</h1>
-    <p>session variable in view: {{ test }}</p>
+    <h1 class="text-center">Home Page</h1>
+
+    {% if not current_user %}
+        <center><a href="{% url 'user_signup' %}" class="button">Sign Up</a>
+        <center><a href="{% url 'user_signin' %}" class="button">Sign In</a>
+    {% else %}
+
+    {% endif %}
 {% endblock %}

@@ -8,6 +8,15 @@ urlpatterns = [
     # /sign_up
     path('sign_up', views.user_signup, name='user_signup'),
 
+    # /sign_in
+    path('sign_in', views.user_signin, name='user_signin'),
+
+    # /sign_in
+    path('sign_in_redirect', views.user_signin_redirect, name='user_signin_redirect'),
+
+    # /sign_out
+    path('sign_out', views.user_signout, name='user_signout'),
+
     # /user_create - not a direct url
     path('user_create', views.user_create, name='user_create'),
 

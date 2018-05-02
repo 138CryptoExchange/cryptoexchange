@@ -10,18 +10,21 @@ current_user = None
 # View function for home
 def home(request):
     if 'current_user' not in request.session:
-        set_user_session(request, True)
+        set_user_session(request, empty=True)
     test = request.session['current_user']
-    return render(request, 'market/home.html', {'test': test})
+    return render(request, 'market/home.html', {
+        'error_message': "",
+        'notification_message': "",
+    })
 
 
 # ********************************************* User
 
-def getset_current_user(changed=False, current_user_id=None):
+def get_current_user(new=False, current_user_id=None):
     global current_user
-    if not changed and current_user:
+    if not new and current_user:
         return current_user
-    elif changed:
+    elif new and current_user_id is not None:
         current_user_object = User.objects.get(pk=current_user_id)
         current_user = current_user_object
         current_user_tuple = get_user_tuple(current_user_object)
@@ -67,17 +70,53 @@ def signed_in_check(request):
         return None
 
 
-def set_user_session(request, user_id, empty=False):
-    if not empty:
-        request.session['current_user'] = getset_current_user(True, user_id)
+def set_user_session(request, user_id=None, empty=False):
+    global current_user
+    if not empty and user_id:
+        request.session['current_user'] = get_current_user(True, user_id)
         user_session_processor(request)
     else:
         request.session['current_user'] = None
+        current_user = None
+        user_session_processor(request)
+
+
+def user_signin(request):
+    not_signed_in_check(request)
+    set_user_session(request, empty=True)
+    return render(request, 'market/user_signin.html')
+
+
+def user_signin_redirect(request):
+    input_name = request.POST['name']
+    input_email = request.POST['email']
+    #TODO:
+    '''
+    User.objects.get(name=input_name, email=input_email)
+        Query that checks whether the User table has a row with the given 'name'
+        and 'email' attributes. If it does exist, return the user object. If it 
+        doesn't exist, return None. 
+    '''
+    user = User.objects.get(name=input_name, email=input_email)
+    if input_email and input_name and user:
+        set_user_session(request, user.user_id)
+        return render(request, 'market/user_profile.html', {
+            'user_id': user.user_id,
+            'notification_message': 'Signed In Successfully',
+        })
+
+
+def user_signout(request):
+    not_signed_in_check(request)
+    set_user_session(request, empty=True)
+    return render(request, 'market/home.html', {
+        'notification_message': 'Signed out successfully.',
+    })
 
 
 def user_signup(request):
     signed_in_check(request)
-    set_user_session(request, True)
+    set_user_session(request, empty=True)
     return render(request, 'market/user_signup.html')
 
 
@@ -100,6 +139,7 @@ def user_create(request):
         set_user_session(request, user.user_id)
         return render(request, 'market/user_profile.html', {
             'user_id': user.user_id,
+            'notification_message': 'Account created successfully',
         })
     else:
         return render(request, 'market/user_signup.html', {

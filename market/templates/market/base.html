@@ -14,6 +14,10 @@
             width: 80%;
             margin: 30px auto;
         }
+
+        .callout{
+            margin: auto;
+        }
     </style>
 </head>
 <body>
@@ -23,13 +27,13 @@
             <ul class="menu align-left">
                 <li class="menu-text">Crypto Exchange {{ current_user.name }}</li>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="#0">Profile</a></li>
+                <li><a href="{% url 'user_profile' current_user.user_id %}">Profile</a></li>
                 <li><a href="#0">Payment Sources</a></li>
             </ul>
         </div>
         <div class="top-bar-right">
             <ul class="menu align-right">
-                <button type="button" class="button">Sign Out</button>
+                <a href={% url 'user_signout' %} class="button">Sign Out</a>
             </ul>
         </div>
     </div>
@@ -42,13 +46,21 @@
                 {{ error_message }}
             </div>
         {% endif %}
-        <p>global template variable: </p>
-        {% if current_user %}
-            {{ current_user.name }}<br>
-            {{ admin }}
-        {% else %}
-            {{ current_user }}
+        {% if notification_message %}
+            <div class="callout success" >
+                {{ notification_message }}
+            </div>
         {% endif %}
+        <div class="callout smmall warning">
+            <div class="text-center"><strong>Session variables:</strong></div><br>
+            <code>Global template variable:
+            {% if current_user %}
+                {{ current_user}}
+            {% else %}
+                {{ current_user }}
+            {% endif %}</code>
+        </div>
+        <hr>
         {% block body %}
         {% endblock %}
     </div>
