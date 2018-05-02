@@ -206,6 +206,10 @@ def payment_source_new(request):
     return render(request, 'market/payment_source_new.html')
 
 
+# ********************************************* Relationships
+
+
+
 # returns today's date and time
 def get_datetime():
     datetime = time.strftime("%Y-%m-%d %H:%M")

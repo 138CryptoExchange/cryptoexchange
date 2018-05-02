@@ -26,7 +26,7 @@ class PaymentSource(models.Model):
 class Wallet(models.Model):
     wallet_pmnt_src_id = models.ForeignKey(PaymentSource, on_delete=models.CASCADE, unique=True,
                                            db_column="payment_source_id")
-    max_limit = models.PositiveSmallIntegerField
+    max_limit = models.PositiveSmallIntegerField()
 
 
 class DebitCard(models.Model):
@@ -35,7 +35,7 @@ class DebitCard(models.Model):
     bank_name = models.CharField(max_length=100)
     card_number = models.CharField(max_length=19, unique=True)
     name = models.CharField(max_length=100)
-    expiry_date = models.DateField
+    expiry_date = models.DateField()                #TODO: need a default value
 
 
 class Currency(models.Model):
@@ -50,3 +50,31 @@ class Currency(models.Model):
     currency_type = models.CharField(max_length=2, choices=CURRENCY_TYPE_CHOICES)
 
     converted_currency = models.ForeignKey('self', on_delete=models.CASCADE, null=True, related_name='currency_to_convert')
+
+
+class PmntSrc_HAS_Currency(models.Model):
+    balance = models.CharField(max_length=100)
+    pmnt_src_id = models.ForeignKey(PaymentSource, on_delete=models.CASCADE, db_column="payment_source_id")
+    currency_name = models.ForeignKey(Currency, on_delete=models.CASCADE)
+
+    class META:
+        unique_together = (("pmnt_src_id", "currency_name"),)
+
+class Trader_TradesUsing_Currency(models.Model):
+    trader_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    currency_name = models.ForeignKey(Currency, on_delete=models.CASCADE)
+
+    class META:
+        unique_together = (("trader_id", "currency_name"),)
+
+class Transactions(models.Model):
+    transaction_id = models.AutoField(primary_key=True, unique=True)
+    transaction_currency = models.CharField(max_length=100)
+    amount = models.PositiveIntegerField()
+    date = models.DateField() #auto_now updates the object when it is saved [Model.save()] TODO: need a default value
+
+    trader_id = models.ForeignKey(Trader_TradesUsing_Currency, on_delete=models.CASCADE, related_name='transactions_traderID')
+    currency_name = models.ForeignKey(Trader_TradesUsing_Currency, on_delete=models.CASCADE, related_name='transactions_currency_name')
+
+    class META:
+        unique_together = (("trader_id", "currency_name"),)
