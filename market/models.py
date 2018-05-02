@@ -35,7 +35,7 @@ class DebitCard(models.Model):
     bank_name = models.CharField(max_length=100)
     card_number = models.CharField(max_length=19, unique=True)
     name = models.CharField(max_length=100)
-    expiry_date = models.DateField()                #TODO: need a default value
+    expiry_date = models.CharField(max_length=20)
 
 
 class Currency(models.Model):
@@ -71,8 +71,8 @@ class Transactions(models.Model):
     transaction_id = models.AutoField(primary_key=True, unique=True)
     transaction_currency = models.CharField(max_length=100)
     amount = models.PositiveIntegerField()
-    date = models.DateField() #auto_now updates the object when it is saved [Model.save()] TODO: need a default value
-
+    date = models.CharField(max_length=20)
+    # auto_now updates the object when it is saved [Model.save()]
     trader_id = models.ForeignKey(Trader_TradesUsing_Currency, on_delete=models.CASCADE, related_name='transactions_traderID')
     currency_name = models.ForeignKey(Trader_TradesUsing_Currency, on_delete=models.CASCADE, related_name='transactions_currency_name')
 

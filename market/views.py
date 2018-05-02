@@ -96,13 +96,22 @@ def user_signin_redirect(request):
         Query that checks whether the User table has a row with the given 'name'
         and 'email' attributes. If it does exist, return the user object. If it 
         doesn't exist, return None. 
+    User.objects.filter(name=input_name, email=input_email).exists()
+        Query that checks whether the User table has a row with the given 'name'
+        and 'email' attributes, and returns a boolean accordingly. This is necessary
+        to check whether the object exists or not before performing a query. Thats why
+        this one is being used in the if condition.
     '''
-    user = User.objects.get(name=input_name, email=input_email)
-    if input_email and input_name and user:
+    if input_email and input_name and User.objects.filter(name=input_name, email=input_email).exists():
+        user = User.objects.get(name=input_name, email=input_email)
         set_user_session(request, user.user_id)
         return render(request, 'market/user_profile.html', {
             'user_id': user.user_id,
             'notification_message': 'Signed In Successfully',
+        })
+    else:
+        return render(request, 'market/user_signin.html', {
+            'error_message': "Incorrect or invalid inputs."
         })
 
 
@@ -207,7 +216,6 @@ def payment_source_new(request):
 
 
 # ********************************************* Relationships
-
 
 
 # returns today's date and time
