@@ -6,7 +6,13 @@
     <form action="{% url 'payment_source_create'  %}" method="post">
         {% csrf_token %}
         <label>Name:
-            <input type="text" name="name">
+            <input type="text" name="name" required>
+        </label><br>
+        <label>Payment Type:
+            <select id="select" name="type" required>
+                <option value="Wallet">Digital Wallet</option>
+                <option value="DebitCard">Debit Card</option>
+            </select>
         </label><br>
         <input type="submit" value="Submit" class="button float-right">
     </form>

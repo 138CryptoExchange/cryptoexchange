@@ -1,0 +1,23 @@
+{% extends 'market/base.html' %}
+
+{% block body %}
+    <div class="callout large secondary">
+    <h3 class="separator-left">Debit Card</h3>
+    <form action="{% url 'debitcard_create' %}" method="post">
+        {% csrf_token %}
+        <label>Bank Name:
+            <input type="text" name="bank_name" required>
+        </label><br>
+        <label>Card Number:
+            <input type="text" name="cnumber" required>
+        </label><br>
+        <label>Owner Name:
+            <input type="text" name="name" required>
+        </label><br>
+        <label>Expiry Date:
+            <input type="text" name="expirydate" required>
+        </label><br>
+        <input type="submit" value="Save" class="button float-right">
+    </form>
+    </div>
+{% endblock %}
