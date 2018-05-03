@@ -18,6 +18,7 @@ def home(request):
         'notification_message': "",
     })
 
+
 def test(request):
     if 'current_user' not in request.session:
         set_user_session(request, True)
@@ -179,6 +180,7 @@ def user_profile(request, user_id):
 
 # ********************************************* Payment Source
 
+
 def all_payment_sources(request):
     not_signed_in_check(request)
     all_ps = PaymentSource.objects.all()
@@ -216,8 +218,8 @@ def payment_source_detail(request, ps_id):
 def payment_source_create(request):
     not_signed_in_check(request)
     global current_user
-  #  global payment_type
-  #  global payment_source
+    #  global payment_type
+    #  global payment_source
 
     input_name = request.POST['name']
     input_type = request.POST['type']
@@ -264,7 +266,6 @@ def payment_source_new(request):
 #     return render(request, 'market/payment_source_detail.html', {'DebitCard': debit})
 
 
-
 def debitcard_create(request, payment_source):
     not_signed_in_check(request)
 
@@ -291,6 +292,7 @@ def debitcard_create(request, payment_source):
             'error_message': "Please fill out all the fields."
         })
 
+
 def wallet_create(request, payment_source):
     not_signed_in_check(request)
 
@@ -310,8 +312,6 @@ def wallet_create(request, payment_source):
         return render(request, 'market/wallet_create.html', {
             'error_message': "Please fill out all the fields."
         })
-
-
 
 
 # *********************************************** Transaction
@@ -350,6 +350,7 @@ def transaction_create(request):
     if input_amount:
         transaction = Transaction()
         transaction.amount = input_amount
+        transaction.date = str(get_datetime())
         # transaction.save
         return render(request, 'market/transaction_detail.html', {
             'transaction': transaction,
