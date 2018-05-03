@@ -2,6 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5dd767e-4c4a-423a-a781-521f1e386ef2" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/market/migrations/0002_auto_20180502_1455.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market/templates/market/transaction_all.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market/templates/market/transaction_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market/templates/market/transaction_new.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market/templates/market/transaction_new_select_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/market/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/templates/market/all_payment_sources.html" beforeDir="false" afterPath="$PROJECT_DIR$/market/templates/market/all_payment_sources.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/templates/market/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/market/templates/market/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/market/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/market/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,66 +24,104 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="crypto_exchange" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/market/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="191" column="52" selection-start-line="191" selection-start-column="52" selection-end-line="191" selection-end-column="52" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/market/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/market/templates/market/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="30" column="60" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all_payment_sources.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/market/templates/market/all_payment_sources.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="6" column="88" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="88" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="payment_source_detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/market/templates/market/payment_source_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/market/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="19" column="52" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/market/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="715">
+                  <caret line="304" column="41" lean-forward="true" selection-start-line="304" selection-start-column="41" selection-end-line="304" selection-end-column="41" />
+                  <folding>
+                    <element signature="e#0#31#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="transaction_detail.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/market/templates/market/transaction_detail.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="81">
+                  <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="28" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="transaction_new_select_source.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/market/templates/market/transaction_new_select_source.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="81">
+                  <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="payment_source_new.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/market/templates/market/payment_source_new.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="108">
+                  <caret line="4" column="54" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="54" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="transaction_all.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/market/templates/market/transaction_all.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="378">
+                  <caret line="14" column="90" lean-forward="true" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/market/urls.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="767">
+                  <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="transaction_new.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/market/templates/market/transaction_new.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="135">
+                  <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/market/models.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="781">
+                  <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/market/templates/market/base.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="533">
+                  <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -93,6 +141,7 @@
       <find>dateti</find>
       <find>date</find>
       <find>print</find>
+      <find>trader_id</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,13 +163,19 @@
         <option value="$PROJECT_DIR$/market/templates/market/home.html" />
         <option value="$PROJECT_DIR$/market/templates/market/user_signup.html" />
         <option value="$PROJECT_DIR$/market/templates/market/user_signin.html" />
-        <option value="$PROJECT_DIR$/market/models.py" />
         <option value="$PROJECT_DIR$/market/templates/market/user_profile.html" />
-        <option value="$PROJECT_DIR$/market/templates/market/base.html" />
-        <option value="$PROJECT_DIR$/market/templates/market/all_payment_sources.html" />
-        <option value="$PROJECT_DIR$/market/urls.py" />
         <option value="$PROJECT_DIR$/market/templates/market/payment_source_detail.html" />
+        <option value="$PROJECT_DIR$/market/templates/market/all_payment_sources.html" />
+        <option value="$PROJECT_DIR$/market/templates/transaction_new_select_source.html" />
+        <option value="$PROJECT_DIR$/market/templates/transaction_new.html" />
+        <option value="$PROJECT_DIR$/market/templates/market/transaction_new.html" />
+        <option value="$PROJECT_DIR$/market/models.py" />
+        <option value="$PROJECT_DIR$/market/templates/market/transaction_detail.html" />
+        <option value="$PROJECT_DIR$/market/urls.py" />
         <option value="$PROJECT_DIR$/market/views.py" />
+        <option value="$PROJECT_DIR$/market/templates/market/base.html" />
+        <option value="$PROJECT_DIR$/market/templates/market/transaction_all.html" />
+        <option value="$PROJECT_DIR$/market/templates/market/transaction_new_select_source.html" />
       </list>
     </option>
   </component>
@@ -133,9 +188,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1320" />
-    <option name="width" value="1560" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="1316" />
+    <option name="width" value="1554" />
     <option name="height" value="1756" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -144,6 +199,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -184,7 +240,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -193,6 +248,11 @@
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.chrisrm.idea.config" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/market/templates/market" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -329,7 +389,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1320" y="0" width="1560" height="1756" extended-state="0" />
+    <frame x="0" y="-38" width="2880" height="1838" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -337,14 +397,14 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4996464" weight="0.32997033" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3785211" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.37804154" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32967034" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22015916" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49970326" visible="true" weight="0.13719943" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" order="2" sideWeight="0.5002967" side_tool="true" weight="0.13719943" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -367,6 +427,41 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/market/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/templates/market/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="30" column="60" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/templates/market/all_payment_sources.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="88" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/templates/market/payment_source_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="52" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/market/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -554,13 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/market/templates/market/payment_source_new.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
@@ -582,47 +670,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/market/migrations/0010_auto_20180501_1729.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crypto_exchange/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market/migrations/0006_auto_20180425_0311.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market/migrations/0004_auto_20180425_0222.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market/migrations/0003_auto_20180424_2211.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market/migrations/0007_auto_20180427_0259.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market/migrations/0007_currency.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market/migrations/0008_merge_20180427_1445.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market/migrations/0009_pmntsrc_has_currency.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market/migrations/0005_auto_20180425_0222.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/market/migrations/0010_auto_20180501_1729.py" />
+    <entry file="file://$PROJECT_DIR$/market/migrations/0005_auto_20180425_0222.py" />
     <entry file="file://$PROJECT_DIR$/market/templates/market/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -656,13 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/market/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="19" column="52" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/market/templates/market/payment_source_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -672,32 +714,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/market/templates/market/all_payment_sources.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="88" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="88" />
+        <state>
+          <caret selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="781">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/market/templates/market/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="30" column="60" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+        <state relative-caret-position="533">
+          <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/market/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="191" column="52" selection-start-line="191" selection-start-column="52" selection-end-line="191" selection-end-column="52" />
+        <state relative-caret-position="715">
+          <caret line="304" column="41" lean-forward="true" selection-start-line="304" selection-start-column="41" selection-end-line="304" selection-end-column="41" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/templates/market/transaction_new.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="767">
+          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/templates/market/transaction_all.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="90" lean-forward="true" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/templates/market/transaction_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/templates/market/payment_source_new.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="54" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/templates/market/transaction_new_select_source.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
         </state>
       </provider>
     </entry>

@@ -1,10 +1,11 @@
 from django.http import Http404
-from .models import PaymentSource, User
+from .models import PaymentSource, User, TraderTradesUsingCurrency, Transaction
 from django.shortcuts import render
 from .context_processor import user_session_processor
 import time
 
 current_user = None
+trade = None
 
 
 # View function for home
@@ -177,7 +178,7 @@ def user_profile(request, user_id):
 def all_payment_sources(request):
     not_signed_in_check(request)
     all_ps = PaymentSource.objects.all()
-    # TODO: create query - but only for showing payment sources of ALL users
+    # TODO: create query - but for showing payment sources of ALL users
     context = {'all_payment_sources': all_ps}
     return render(request, 'market/all_payment_sources.html', context)
 
@@ -230,6 +231,95 @@ def payment_source_create(request):
 def payment_source_new(request):
     not_signed_in_check(request)
     return render(request, 'market/payment_source_new.html')
+
+
+# *********************************************** Transaction
+
+'''
+    transaction_new_select_source > transaction_new & create_trader_trades_using_currency
+        > transaction_create
+    new transaction query sequence: 
+    payment_source > payment_source_id > PaymentSourceHasCurrency > currency_name
+    using the currency_name, a new TraderTradesUsingCurrency object will be created. 
+    (trader_id=current_user_id)
+'''
+
+
+def transaction_new_select_source(request):
+    # asks user which payment source they want to use to create the transaction.
+    not_signed_in_check(request)
+    user_all_ps = PaymentSource.objects.filter(u_id=current_user.user_id)
+    return render(request, 'market/transaction_new_select_source.html', {
+        'all_payment_sources': user_all_ps,
+    })
+
+
+def transaction_new(request, payment_source_id):
+    # creates a new TraderTradesUsingCurrency object
+    # with currency name acquired from payment_source_id
+    # renders new form at end
+    global trade
+    not_signed_in_check(request)
+    trade = create_trader_trades_using_currency(payment_source_id)
+    return render(request, 'market/transaction_new.html')
+
+
+def transaction_create(request):
+    input_amount = request.POST['amount']
+    if input_amount:
+        transaction = Transaction()
+        transaction.amount = input_amount
+        # transaction.save
+        return render(request, 'market/transaction_detail.html', {
+            'transaction': transaction,
+        })
+    else:
+        return render(request, 'market/transaction_new.html', {
+            'error_message': "Please fill out all the fields."
+        })
+
+
+def transaction_detail(request, transaction_id):
+    not_signed_in_check(request)
+    # TODO:
+    '''
+    PaymentSource.objects.get(pk=ps_id)
+        Given a transaction_id, get the corresponding transaction.
+    '''
+    transaction = ''  # TODO: create query
+    return render(request, 'market/transaction_detail.html', {'transaction': transaction})
+
+
+def create_trader_trades_using_currency(payment_source_id):
+    # get payment_source's currency name
+    new_trade = TraderTradesUsingCurrency()
+    cur_name = ''  # TODO: query goes here.
+    # get paymentsource's currency using given payment_source_id
+    new_trade.trader_id = current_user.user_id
+    new_trade.currency_name = cur_name
+    return new_trade
+
+
+def all_transactions(request):
+    not_signed_in_check(request)
+    all_trs = PaymentSource.objects.all()
+    # TODO: create query - for showing transactions for ALL users (admin functionality)
+    context = {'all_transactions': all_trs}
+    return render(request, 'market/transaction_all.html', context)
+
+
+def all_user_transactions(request, user_id):
+    not_signed_in_check(request)
+    user_all_trs = Transaction.objects.filter(trader_id=user_id)
+    # TODO:
+    '''
+    PaymentSource.objects.filter(u_id=user_id)
+        Given a foreign key user_id, get all the corresponding transactions.
+        (get all the payment sources of a given user)
+    '''
+    return render(request, 'market/transaction_all.html', {
+        'all_transaction': user_all_trs,
+    })
 
 
 # ********************************************* Relationships

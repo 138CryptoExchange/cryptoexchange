@@ -1,17 +1,18 @@
 {% extends 'market/base.html' %}
 
 {% block body %}
+    <h4 class="text-center">Select the payment source for this transaction.</h4>
     {% if all_payment_sources %}
         <ul>
             {% for payment_source in all_payment_sources %}
-            <li><a href="{% url 'payment_source_detail' payment_source.payment_source_id %}">
-                {{ payment_source.name }}
-            </a> </li>
+                <li><a href="{% url 'transaction_new' payment_source.payment_source_id %}">
+                    {{ payment_source.name }}
+                </a> </li>
             {% endfor %}
         </ul>
     {% else %}
-        <h3>You don't have any payment sources.</h3>
+        <h3>You don't have any payment sources. Please create a payment source.</h3>
     {% endif %}
-    <br>
     <center><a href="{% url 'payment_source_new' %}" class="button">New Payment Source</a></center>
+    <br>
 {% endblock %}

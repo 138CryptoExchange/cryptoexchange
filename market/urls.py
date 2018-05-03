@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     # /market/
     path('', views.home, name='home'),
@@ -38,7 +39,29 @@ urlpatterns = [
     path('payment_source/new', views.payment_source_new,
          name='payment_source_new'),
 
-    # /payment_sources/create - not a direct url
+    # /payment_sources/create
     path('payment_source/create', views.payment_source_create,
          name='payment_source_create'),
+
+    # /transaction/new_select_source
+    path('transaction/new_select_source', views.transaction_new_select_source,
+         name='transaction_new_select_source'),
+
+    # /transaction/new/pmnt_src_id={{id}}
+    path('transaction/new+pmnt_src_id=<int:payment_source_id>', views.transaction_new,
+         name='transaction_new'),
+
+    # /transaction/create
+    path('transaction/create', views.transaction_create, name='transaction_create'),
+
+    # /transaction/{{id}}/
+    path('transaction/<int:transaction_id>', views.transaction_detail,
+         name='transaction_detail'),
+
+    # /all_transactions/
+    path('all_transactions', views.all_transactions, name='all_transactions'),
+
+    # /all_user_transactions/
+    path('all_user_transactions/<int:user_id>', views.all_user_transactions,
+         name='all_user_transactions'),
 ]

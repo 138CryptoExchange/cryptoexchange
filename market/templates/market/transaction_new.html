@@ -1,0 +1,14 @@
+{% extends 'market/base.html' %}
+
+{% block body %}
+    <div class="callout large secondary">
+        <h3 class="separator-left">New Transaction</h3>
+        <form action="{% url 'transaction_create'  %}" method="post">
+            {% csrf_token %}
+            <label>Amount:
+                <input type="number" name="amount" min="1">
+            </label><br>
+            <input type="submit" value="Submit" class="button float-right">
+        </form>
+    </div>
+{% endblock %}

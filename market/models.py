@@ -52,7 +52,7 @@ class Currency(models.Model):
     converted_currency = models.ForeignKey('self', on_delete=models.CASCADE, null=True, related_name='currency_to_convert')
 
 
-class PmntSrc_HAS_Currency(models.Model):
+class PaymentSourceHasCurrency(models.Model):
     balance = models.CharField(max_length=100)
     pmnt_src_id = models.ForeignKey(PaymentSource, on_delete=models.CASCADE, db_column="payment_source_id")
     currency_name = models.ForeignKey(Currency, on_delete=models.CASCADE)
@@ -60,21 +60,22 @@ class PmntSrc_HAS_Currency(models.Model):
     class META:
         unique_together = (("pmnt_src_id", "currency_name"),)
 
-class Trader_TradesUsing_Currency(models.Model):
+
+class TraderTradesUsingCurrency(models.Model):
     trader_id = models.ForeignKey(User, on_delete=models.CASCADE)
     currency_name = models.ForeignKey(Currency, on_delete=models.CASCADE)
 
     class META:
         unique_together = (("trader_id", "currency_name"),)
 
-class Transactions(models.Model):
+
+class Transaction(models.Model):
     transaction_id = models.AutoField(primary_key=True, unique=True)
-    transaction_currency = models.CharField(max_length=100)
     amount = models.PositiveIntegerField()
     date = models.CharField(max_length=20)
     # auto_now updates the object when it is saved [Model.save()]
-    trader_id = models.ForeignKey(Trader_TradesUsing_Currency, on_delete=models.CASCADE, related_name='transactions_traderID')
-    currency_name = models.ForeignKey(Trader_TradesUsing_Currency, on_delete=models.CASCADE, related_name='transactions_currency_name')
+    trader_id = models.ForeignKey(TraderTradesUsingCurrency, on_delete=models.CASCADE, related_name='transactions_traderID')
+    currency_name = models.ForeignKey(TraderTradesUsingCurrency, on_delete=models.CASCADE, related_name='transactions_currency_name')
 
     class META:
         unique_together = (("trader_id", "currency_name"),)

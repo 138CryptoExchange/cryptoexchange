@@ -25,10 +25,11 @@
     <div class="top-bar" id="responsive-menu">
         <div class="top-bar-left">
             <ul class="menu align-left">
-                <li class="menu-text">Crypto Exchange {{ current_user.name }}</li>
+                <li class="menu-text">Crypto Exchange</li>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'user_profile' current_user.user_id %}">Profile</a></li>
                 <li><a href="{% url 'all_user_payment_source' current_user.user_id %}">Payment Sources</a></li>
+                <li><a href="{% url 'all_user_transactions' current_user.user_id %}">Transactions</a></li>
             </ul>
         </div>
         <div class="top-bar-right">

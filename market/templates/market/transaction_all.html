@@ -1,0 +1,16 @@
+{% extends 'market/base.html' %}
+
+{% block body %}
+    {% if all_transaction %}
+    <ul>
+        {% for transaction in all_transaction %}
+            <li><a href="{% url 'transaction_new' transaction.transaction_id %}">
+                {{ transaction.amount}}
+            </a> </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <h3>No transactions.</h3>
+    {% endif %}
+    <a href="{% url 'transaction_new_select_source' %}" class="button">New Transaction</a>
+{% endblock %}
